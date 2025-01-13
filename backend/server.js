@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db"); // Import MongoDB connection logic
-
+const path = require("path");
 // Import Routes
 const dashboardRoutes = require("./routes/dashboardRoutes"); // Dashboard routes (protected routes)
 const breedRoutes = require("./routes/breedRoutes");
@@ -10,11 +10,13 @@ const productRoutes = require("./routes/productRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const adminAuthRoutes = require("./routes/adminAuth"); // Admin authentication routes
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
+const newCheckoutRoutes = require("./routes/newCheckout");
+const ordersRoutes = require("./routes/orders");
 
 dotenv.config(); // Load environment variables
 
 const app = express();
-
+const uploadsPath = path.join(__dirname, "..", "uploads");
 // Connect to MongoDB using the imported connectDB function
 connectDB();
 
@@ -31,11 +33,14 @@ app.get("/", (req, res) => {
 
 // Mount routers
 // Public APIs
+app.use("/api/orders", ordersRoutes);
+app.use("/api/newCheckout", newCheckoutRoutes);
 app.use("/api/breeds", breedRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
+app.use("/uploads", express.static(uploadsPath));
 
 // Admin panel (protected routes)
 app.use("/api/admin/auth", adminAuthRoutes); // Admin authentication routes (login/signup)

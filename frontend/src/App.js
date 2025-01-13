@@ -12,6 +12,7 @@ import LandingPage from "./pages/LandingPage"; // Assuming you've already create
 import ProductPage from "./components/Client/ProductPage";
 import BlogDetail from "./components/Client/BlogDetail";
 import BreedDetail from "./components/Client/BreedDetail";
+import BreedPage from "./components/Client/BreedPage";
 
 // ProtectedRoute component
 const ProtectedRoute = ({ children }) => {
@@ -25,6 +26,7 @@ const App = () => {
       <Routes>
         {/* Default route: Redirect to LandingPage for the client */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/breed" element={<BreedPage />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/blog/:title" element={<BlogDetail />} />
         {/* Breed detail page with dynamic breed name */}

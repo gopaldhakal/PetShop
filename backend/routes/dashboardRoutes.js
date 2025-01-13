@@ -4,10 +4,12 @@ const router = express.Router();
 // Import your models here
 const Product = require("../models/Product");
 const Blog = require("../models/Blog");
+const Order = require("../models/Order");
 
 // Define the GET route for the dashboard data
 router.get("/", async (req, res) => {
   try {
+    const pendingOrdersCount = await Order.countDocuments({ completed: false });
     // Fetch the total count of products
     const totalProducts = await Product.countDocuments();
 
@@ -25,6 +27,7 @@ router.get("/", async (req, res) => {
       totalProducts,
       totalBlogPosts,
       recentBlogPosts,
+      pendingOrdersCount,
     });
   } catch (error) {
     console.error("Error fetching dashboard data:", error);

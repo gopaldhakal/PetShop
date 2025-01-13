@@ -1,4 +1,3 @@
-// src/pages/AdminDashboard.js
 import React from "react";
 import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 import Dashboard from "../components/Admin/Dashboard";
@@ -6,6 +5,7 @@ import Blog from "../components/Admin/Blog";
 import Breed from "../components/Admin/Breed";
 import Product from "../components/Admin/Product";
 import AdminSubscriptions from "../components/Admin/AdminSubscriptions";
+import Order from "../components/Admin/Order"; // Import Orders component
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -35,9 +35,13 @@ const AdminDashboard = () => {
           <Link to="product" className="block p-4 hover:bg-gray-700">
             Manage Products
           </Link>
-          <Link to="AdminSubscriptions" className="block p-4 hover:bg-gray-700">
+          <Link to="adminSubscriptions" className="block p-4 hover:bg-gray-700">
             Subscription
           </Link>
+          <Link to="orders" className="block p-4 hover:bg-gray-700">
+            Orders
+          </Link>{" "}
+          {/* Add link to Orders */}
         </nav>
         <button
           onClick={handleLogout}
@@ -57,6 +61,8 @@ const AdminDashboard = () => {
           <Route path="breed" element={<Breed />} />
           <Route path="product" element={<Product />} />
           <Route path="adminSubscriptions" element={<AdminSubscriptions />} />
+          <Route path="orders" element={<Order />} />{" "}
+          {/* Add route for Orders */}
         </Routes>
       </main>
     </div>
