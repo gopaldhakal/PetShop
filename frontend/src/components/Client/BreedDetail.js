@@ -11,7 +11,7 @@ const BreedDetail = () => {
     const fetchBreed = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/breeds/${name}`
+          `https://petshopbackend-nrbh.onrender.com/api/breeds/${name}` // ✅ Fixed API URL
         );
         setBreed(response.data);
       } catch (error) {
