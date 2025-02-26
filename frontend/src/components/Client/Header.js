@@ -11,9 +11,9 @@ const Header = () => {
   const handleSearch = async () => {
     if (!searchQuery.trim()) return;
 
-    try {
+   try {
       const response = await axios.get(
-        `http://localhost:5000/api/breeds/search?query=${searchQuery.trim()}`
+        `https://petshopbackend-nrbh.onrender.com/api/breeds/search?query=${encodeURIComponent(searchQuery.trim())}`
       );
       setSearchResults(response.data);
 
