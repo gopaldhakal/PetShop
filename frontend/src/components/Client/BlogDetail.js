@@ -11,7 +11,7 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(' `https://petshopbackend-nrbh.onrender.com/api/blogs/title/${title}`
+        const response = await axios.get( `https://petshopbackend-nrbh.onrender.com'
           //`http://localhost:5000/api/blogs/title/${title}`
           ,
           {
