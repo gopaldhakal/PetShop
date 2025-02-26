@@ -12,12 +12,12 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/admin/auth/login",
-        {
-          email,
-          password,
-        }
-      );
+  "https://petshopbackend-nrbh.onrender.com/api/admin/auth/login", // Use the Render backend URL
+  {
+    email,
+    password,
+  }
+);
 
       const { token } = response.data;
 
