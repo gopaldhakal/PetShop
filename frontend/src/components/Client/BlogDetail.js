@@ -11,9 +11,8 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get( `https://petshopbackend-nrbh.onrender.com'
-          //`http://localhost:5000/api/blogs/title/${title}`
-          ,
+        const response = await axios.get(
+          `https://petshopbackend-nrbh.onrender.com/api/blogs/title/${title}`, // ✅ Fixed URL
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -34,9 +33,7 @@ const BlogDetail = () => {
     <div className="container mx-auto px-4 py-12">
       {error ? (
         <div className="bg-red-100 p-6 rounded-lg shadow-lg text-center">
-          <p className="text-red-500 mb-4">
-            Blog not found or an error occurred.
-          </p>
+          <p className="text-red-500 mb-4">Blog not found or an error occurred.</p>
           <button
             onClick={() => navigate("/")}
             className="bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-600 mx-auto"
